@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="14135" systemVersion="17F77" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="BuyukSozluk" representedClassName="BuyukSozluk" syncable="YES" codeGenerationType="class">
+        <attribute name="anahtarKelime" attributeType="String" syncable="YES"/>
+        <attribute name="mana1" attributeType="String" syncable="YES"/>
+        <attribute name="mana2" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="mana3" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="mana4" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="mana5" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="mana6" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="mana7" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="mana8" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="mana9" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="mana10" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="BuyukSozluk" positionX="-63" positionY="-18" width="128" height="210"/>
+    </elements>
+</model>

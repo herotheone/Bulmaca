@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="14135" systemVersion="17F77" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
-    <entity name="BuyukSozluk" representedClassName="BuyukSozluk" syncable="YES" codeGenerationType="class">
+    <entity name="BuyukSozluk" representedClassName=".BuyukSozluk" syncable="YES" codeGenerationType="class">
         <attribute name="anahtarKelime" attributeType="String" syncable="YES"/>
         <attribute name="mana1" attributeType="String" syncable="YES"/>
         <attribute name="mana2" optional="YES" attributeType="String" syncable="YES"/>

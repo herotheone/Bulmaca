@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2E9C9E832138270C0022C0EB /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2E9C9E822138270B0022C0EB /* GoogleService-Info.plist */; };
 		2EABEB0D2129FBD300243E24 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EABEB0C2129FBD300243E24 /* AppDelegate.swift */; };
 		2EABEB0F2129FBD300243E24 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EABEB0E2129FBD300243E24 /* ViewController.swift */; };
 		2EABEB122129FBD300243E24 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2EABEB102129FBD300243E24 /* Main.storyboard */; };
@@ -18,6 +19,7 @@
 
 /* Begin PBXFileReference section */
 		0BD26508FB420AFFCAFA70CA /* Pods_Bulmaca_So_zlu_k.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Bulmaca_So_zlu_k.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		2E9C9E822138270B0022C0EB /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		2EABEB092129FBD300243E24 /* Bulmaca Sözlük.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Bulmaca Sözlük.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2EABEB0C2129FBD300243E24 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2EABEB0E2129FBD300243E24 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -42,6 +44,31 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2E9C9E84213857C00022C0EB /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				2EABEB0E2129FBD300243E24 /* ViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		2E9C9E86213857FE0022C0EB /* View */ = {
+			isa = PBXGroup;
+			children = (
+				2EABEB102129FBD300243E24 /* Main.storyboard */,
+				2EABEB182129FBD800243E24 /* LaunchScreen.storyboard */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		2E9C9E872138581F0022C0EB /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				2EABEB0C2129FBD300243E24 /* AppDelegate.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		2EABEB002129FBD300243E24 = {
 			isa = PBXGroup;
 			children = (
@@ -63,13 +90,13 @@
 		2EABEB0B2129FBD300243E24 /* Bulmaca Sözlük */ = {
 			isa = PBXGroup;
 			children = (
-				2EABEB0C2129FBD300243E24 /* AppDelegate.swift */,
-				2EABEB0E2129FBD300243E24 /* ViewController.swift */,
-				2EABEB102129FBD300243E24 /* Main.storyboard */,
+				2E9C9E872138581F0022C0EB /* Model */,
+				2E9C9E86213857FE0022C0EB /* View */,
+				2E9C9E84213857C00022C0EB /* Controller */,
 				2EABEB162129FBD800243E24 /* Assets.xcassets */,
-				2EABEB182129FBD800243E24 /* LaunchScreen.storyboard */,
 				2EABEB1B2129FBD800243E24 /* Info.plist */,
 				2EABEB132129FBD300243E24 /* Bulmaca_So_zlu_k.xcdatamodeld */,
+				2E9C9E822138270B0022C0EB /* GoogleService-Info.plist */,
 			);
 			path = "Bulmaca Sözlük";
 			sourceTree = "<group>";
@@ -152,6 +179,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2EABEB1A2129FBD800243E24 /* LaunchScreen.storyboard in Resources */,
+				2E9C9E832138270C0022C0EB /* GoogleService-Info.plist in Resources */,
 				2EABEB172129FBD800243E24 /* Assets.xcassets in Resources */,
 				2EABEB122129FBD300243E24 /* Main.storyboard in Resources */,
 			);
@@ -165,17 +193,23 @@
 			buildActionMask = 2147483647;
 			files = (
 			);
-			inputFileListPaths = (
-			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-Bulmaca Sözlük/Pods-Bulmaca Sözlük-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
+				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
+				"${BUILT_PRODUCTS_DIR}/SVProgressHUD/SVProgressHUD.framework",
 				"${BUILT_PRODUCTS_DIR}/SearchTextField/SearchTextField.framework",
+				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
+				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-			);
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SVProgressHUD.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SearchTextField.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -187,15 +221,11 @@
 			buildActionMask = 2147483647;
 			files = (
 			);
-			inputFileListPaths = (
-			);
 			inputPaths = (
 				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
 				"${PODS_ROOT}/Manifest.lock",
 			);
 			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
 			outputPaths = (
 				"$(DERIVED_FILE_DIR)/Pods-Bulmaca Sözlük-checkManifestLockResult.txt",
 			);
@@ -361,6 +391,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = X6J5BK9W64;
 				INFOPLIST_FILE = "Bulmaca Sözlük/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -380,6 +411,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = X6J5BK9W64;
 				INFOPLIST_FILE = "Bulmaca Sözlük/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

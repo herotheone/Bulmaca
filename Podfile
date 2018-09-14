@@ -7,5 +7,10 @@ target 'Bulmaca Sözlük' do
 
   # Pods for Bulmaca Sözlük
     pod 'SearchTextField'
+    pod 'Firebase'
+    pod 'Firebase/Auth'
+    pod 'Firebase/Database'
+    pod 'SVProgressHUD'
+    pod 'Google-Mobile-Ads-SDK'
 
 end

@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina5_5" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
-        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -14,7 +13,7 @@
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="Bulmaca_So_zlu_k" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="Bulmaca_So_zlu_k" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -26,7 +25,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="282.66666666666669"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Group 2" translatesAutoresizingMaskIntoConstraints="NO" id="hQs-xj-q5B">
-                                        <rect key="frame" x="136" y="46" width="142" height="190"/>
+                                        <rect key="frame" x="136" y="46.333333333333343" width="142" height="190"/>
                                     </imageView>
                                 </subviews>
                                 <constraints>
@@ -37,39 +36,27 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qho-3d-isY" userLabel="Orta View">
                                 <rect key="frame" x="0.0" y="282.66666666666669" width="414" height="159.66666666666669"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HVd-7K-cMk">
-                                        <rect key="frame" x="184" y="129.66666666666663" width="46" height="30"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="30" id="zf7-xm-en9"/>
-                                        </constraints>
-                                        <state key="normal" title="Button"/>
-                                        <connections>
-                                            <action selector="reklamGoster:" destination="BYZ-38-t0r" eventType="touchUpInside" id="8bx-Fy-8QH"/>
-                                        </connections>
-                                    </button>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Kelimeyi Girin" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="Tng-dh-3rn" customClass="SearchTextField" customModule="SearchTextField">
-                                        <rect key="frame" x="17.333333333333343" y="0.0" width="379.66666666666663" height="40"/>
+                                        <rect key="frame" x="17.666666666666657" y="0.0" width="378.66666666666674" height="40"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="40" id="Zng-B7-Dlq"/>
                                         </constraints>
                                         <color key="textColor" red="0.42352941179999998" green="0.53333333329999999" blue="0.35686274509999999" alpha="1" colorSpace="calibratedRGB"/>
                                         <fontDescription key="fontDescription" name="KohinoorBangla-Regular" family="Kohinoor Bangla" pointSize="36"/>
-                                        <textInputTraits key="textInputTraits" autocorrectionType="no"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="words" autocorrectionType="no"/>
                                     </textField>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Line 3" translatesAutoresizingMaskIntoConstraints="NO" id="6nn-cD-X25">
-                                        <rect key="frame" x="17.333333333333343" y="40" width="379.66666666666663" height="5"/>
+                                        <rect key="frame" x="17.666666666666657" y="40" width="378.66666666666674" height="5"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="5" id="qvc-d0-IFH"/>
                                         </constraints>
                                     </imageView>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstItem="HVd-7K-cMk" firstAttribute="centerX" secondItem="qho-3d-isY" secondAttribute="centerX" id="092-jb-lYA"/>
                                     <constraint firstItem="Tng-dh-3rn" firstAttribute="width" secondItem="qho-3d-isY" secondAttribute="width" multiplier="0.915" id="1Eg-qh-3m9"/>
                                     <constraint firstItem="6nn-cD-X25" firstAttribute="top" secondItem="Tng-dh-3rn" secondAttribute="bottom" id="9c9-yo-Jlr"/>
                                     <constraint firstItem="Tng-dh-3rn" firstAttribute="top" secondItem="qho-3d-isY" secondAttribute="top" id="HRd-bW-lNY"/>
                                     <constraint firstItem="6nn-cD-X25" firstAttribute="centerX" secondItem="qho-3d-isY" secondAttribute="centerX" id="SWr-9z-HXz"/>
-                                    <constraint firstAttribute="bottom" secondItem="HVd-7K-cMk" secondAttribute="bottom" id="ZBf-Jx-C0g"/>
                                     <constraint firstItem="6nn-cD-X25" firstAttribute="width" secondItem="qho-3d-isY" secondAttribute="width" multiplier="0.915" id="a7r-wF-Gbw"/>
                                     <constraint firstItem="Tng-dh-3rn" firstAttribute="centerX" secondItem="qho-3d-isY" secondAttribute="centerX" id="dMp-yK-ZVZ"/>
                                 </constraints>
@@ -78,7 +65,7 @@
                                 <rect key="frame" x="0.0" y="442.33333333333326" width="414" height="293.66666666666674"/>
                                 <subviews>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="NQD-sL-2Da">
-                                        <rect key="frame" x="0.0" y="0.66666666666668561" width="414" height="292.66666666666669"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="293.66666666666669"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <color key="sectionIndexBackgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <prototypes>
@@ -132,9 +119,8 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
-                        <outlet property="aramaSonuclariTableView" destination="NQD-sL-2Da" id="0V0-8d-hJd"/>
+                        <outlet property="aramaSonuclariTableView" destination="NQD-sL-2Da" id="kKb-hy-le2"/>
                         <outlet property="aramaTextField" destination="Tng-dh-3rn" id="eKf-ZR-G7o"/>
-                        <outlet property="butonS" destination="HVd-7K-cMk" id="NQq-40-RMv"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

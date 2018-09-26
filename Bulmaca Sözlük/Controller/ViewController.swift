@@ -12,6 +12,7 @@ import CoreData
 import Firebase
 import SVProgressHUD
 import GoogleMobileAds
+import GRDB.Swift
 
 
 class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, GADBannerViewDelegate, GADRewardBasedVideoAdDelegate {
@@ -20,9 +21,8 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     var bannerView : GADBannerView!
     var rewardBasedAd : GADRewardBasedVideoAd!
     
-    
-    
     @IBOutlet weak var aramaSonuclariTableView: UITableView!
+    
     
     @IBOutlet weak var aramaTextField: SearchTextField!
     
@@ -35,26 +35,86 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     var textFieldDizisi : [String] = [ ]
     var altSonuc : [String] = [ ]
     var herhangiBirDizi : [ String ] = [ ]
-    
+    var grdbDizisi : [ String ] = [ ]
     var deger : Float = 0.0
     var birInt : Int = 0
-    
-    @IBOutlet weak var butonS: UIButton!
-    
+   
+    var dbPath : String = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-//        bannerView = GADBannerView(adSize: kGADAdSizeBanner)
-//
-//        addBannerViewToView(bannerView)
-//        bannerView.delegate = self
-//        bannerView.adUnitID = "ca-app-pub-8553309387589335/1793811402"
-//        bannerView.rootViewController = self
         
-//        let riquest = GADRequest()
-//        riquest.testDevices = [ kGADSimulatorID , "c0dd8e340f66bd0b8d8477bd15a9467b2bffd622"]
-//        bannerView.load(riquest)
+        var dbResourcePath : String = ""
+        
+        
+        var config = Configuration()
+        config.readonly = true
+        
+        let fileManager = FileManager.default
+        do{
+            dbPath = try fileManager
+                .url(for: .applicationSupportDirectory, in: .userDomainMask, appropriateFor: nil, create: true)
+                .appendingPathComponent("db2.sqlite")
+                .path
+            
+            if !fileManager.fileExists(atPath: dbPath) {
+                dbResourcePath = Bundle.main.path(forResource: "db2", ofType: "sqlite")!
+                try fileManager.copyItem(atPath: dbResourcePath, toPath: dbPath)
+                print("Dosya yoktu kopyalandı")
+            }
+        }catch{
+            print("An error has occured")
+        }
+        
+        
+        
+        do {
+            
+            let dbQueue = try DatabaseQueue(path: dbPath)
+            
+            try dbQueue.inDatabase { db in
+                
+                //Select all data from the table named tablename residing in SQLite
+                let rows = try Row.fetchCursor(db, "SELECT * FROM ZIMPORT")
+                
+                while let row = try rows.next() {
+                    
+                    let someString : String = row["gAnahtarKelime"]
+                    let someString2 : String = row["gMana1"]
+                    let someString3 : String = row["gMana2"]
+                    let someString4 : String = row["gMana3"]
+                    print("Anahtar Kelime : \(someString)")
+                    print("Mana 1 : \(someString2)")
+                    print("Mana 2 : \(someString3)")
+                    print("Mana 3 : \(someString4)")
+                    
+                    grdbDizisi.append(someString)
+                    
+                }
+                
+                
+                
+                
+            }
+            
+            
+        } catch {
+            
+            print(error.localizedDescription)
+            
+        }
+    
+        bannerView = GADBannerView(adSize: kGADAdSizeBanner)
+
+        addBannerViewToView(bannerView)
+        bannerView.delegate = self
+        bannerView.adUnitID = "ca-app-pub-8553309387589335/1793811402"
+        bannerView.rootViewController = self
+        
+        let riquest = GADRequest()
+        riquest.testDevices = [ kGADSimulatorID , "c0dd8e340f66bd0b8d8477bd15a9467b2bffd622"]
+        bannerView.load(riquest)
 //
 //        rewardBasedAd = GADRewardBasedVideoAd.sharedInstance()
 //        rewardBasedAd.delegate = self
@@ -62,28 +122,33 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         
         
         //Google deneme id : ca-app-pub-3940256099942544/1712485313
-        aramaTextField.addTarget(self, action: #selector(ViewController.textFieldDidChange(_:)), for: UIControlEvents.editingChanged)
-        
+//        aramaTextField.addTarget(self, action: #selector(ViewController.textFieldDidChange(_:)), for: UIControlEvents.editingChanged)
+//
+//
         
         aramaSonuclariTableView.backgroundColor = UIColor.clear
-        
-        dataBaseKontroluYap()
-        
-        
-        
 
         
-        aramaTextField.theme.cellHeight = UITableViewAutomaticDimension
          aramaTextField.theme.font = UIFont(name: "KohinoorBangla-Regular", size: 22)!
          aramaTextField.highlightAttributes = [NSAttributedStringKey.backgroundColor: UIColor.yellow, NSAttributedStringKey.font:UIFont(name: "KohinoorBangla-Regular", size: 22)!]
+        aramaTextField.filterStrings(grdbDizisi)
+        
+        aramaTextField.comparisonOptions = NSString.CompareOptions.anchored
+        
+        
+        
+        aramaTextField.theme.cellHeight = 30
+        
+    
         
         aramaTextField.itemSelectionHandler = {item, itemPosition in
+            
             self.aramaTextField.text = item[itemPosition].title
-            
-            
-            self.sonuclariListele(anahtarKelimem : item[itemPosition].title)
+
+
+            self.grdbSonuclariniListele(gelenAnahtarKelime: item[itemPosition].title)
             self.view.endEditing(true)
-            
+
         }
 
     }
@@ -219,124 +284,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
  }
     
     
-    func googleDatabaseiniCek()
-    {
-        let newItem = BuyukSozluk(context: self.context)
-        
-        for number in 1..<6654
-        {
-        let ref = Database.database().reference().child("BuyukSozluk/\(number)").observeSingleEvent(of: .value) { (snapshot) in
-            if let phoneDB = snapshot.value as? NSDictionary{
-
-                newItem.anahtarKelime = phoneDB["gAnahtarKelime"] as? String ?? ""
-                newItem.mana1 = phoneDB["gMana1"] as? String ?? ""
-                if phoneDB["gMana2"] as? String ?? "" == ""
-                    {newItem.mana2 = nil}
-                else{newItem.mana2 = phoneDB["gMana2"] as? String ?? ""}
-                if phoneDB["gMana3"] as? String ?? "" == ""
-                {newItem.mana3 = nil}
-                else{newItem.mana3 = phoneDB["gMana3"] as? String ?? ""}
-                if phoneDB["gMana4"] as? String ?? "" == ""
-                {newItem.mana4 = nil}
-                else{newItem.mana4 = phoneDB["gMana4"] as? String ?? ""}
-                if phoneDB["gMana5"] as? String ?? "" == ""
-                {newItem.mana5 = nil}
-                else{newItem.mana5 = phoneDB["gMana5"] as? String ?? ""}
-                if phoneDB["gMana6"] as? String ?? "" == ""
-                {newItem.mana6 = nil}
-                else{newItem.mana6 = phoneDB["gMana6"] as? String ?? ""}
-                if phoneDB["gMana7"] as? String ?? "" == ""
-                {newItem.mana7 = nil}
-                else{newItem.mana7 = phoneDB["gMana7"] as? String ?? ""}
-                if phoneDB["gMana8"] as? String ?? "" == ""
-                {newItem.mana8 = nil}
-                else{newItem.mana8 = phoneDB["gMana8"] as? String ?? ""}
-                if phoneDB["gMana9"] as? String ?? "" == ""
-                {newItem.mana9 = nil}
-                else{newItem.mana9 = phoneDB["gMana9"] as? String ?? ""}
-                if phoneDB["gMana10"] as? String ?? "" == ""
-                {newItem.mana10 = nil}
-                else{newItem.mana10 = phoneDB["gMana10"] as? String ?? ""}
-                
-                self.herhangiBirDizi.append(phoneDB["gAnahtarKelime"] as? String ?? "")
-                self.aramaTextField.filterStrings(self.herhangiBirDizi)
-                
-                self.sozlukDizisi.append(newItem)
-                
-                
-                    self.deger = Float(self.herhangiBirDizi.count) / Float(6653.0)
-                    
-                    if self.deger >= Float(1.0) {
-                        
-                        SVProgressHUD.dismiss()
-                        SVProgressHUD.showSuccess(withStatus: "Sözlük indirildi \n \n Sözlüğü çevrimdışı olarak da kullanabilirsiniz !")
-                    }else{
-                        SVProgressHUD.showProgress(self.deger, status: "Sözlük indiriliyor \n Lütfen bekleyin")
-                        self.deger = self.deger + 1
-                    }
-                
-                self.birFonksiyon(stringDegeri: phoneDB["gAnahtarKelime"] as? String ?? "")
-                
-              
-                
-                do{
-                  try self.context.save()
-                    print("Kaydedildi")
-                 }
-                catch
-                 {
-                    print("Error saving context")
-                   }
-            }
- 
-        }
-            
-            print(sozlukDizisi.count)
-        }
-
-        
-        
-    }
-    func birFonksiyon(stringDegeri : String)  {
-        butonS.setTitle(stringDegeri, for: .normal)
-    }
-    func dataBaseKontroluYap()  {
-        // Telefonda kaç tane veri var onu kontrol ediyoruz
-        let requestim :NSFetchRequest<BuyukSozluk> = BuyukSozluk.fetchRequest()
-        
-        do {
-            searchTextFieldDizisi = try context.fetch(requestim)
-        }catch
-        {
-            print("SearchTextField verileri yüklenirken bir hata oluştu : \(error)")
-        }
-        
-        
-        searchTextFieldFonksiyonu()
-        
-        
-        Database.database().reference().child("BuyukSozluk").observeSingleEvent(of: .value) { (snapshot) in
-            if snapshot.exists()
-            {
-                if let snapshots = snapshot.children.allObjects as? [DataSnapshot] {
-                    
-                    if self.searchTextFieldDizisi.count == snapshots.count {
-                        print("Google'dan gelen veriler ile telefondaki veriler birebir aynı update'e gerek yok")
-                    }
-                    else if self.searchTextFieldDizisi.count != snapshots.count {
-                        self.silmeYap()
-                        print("Google sözlüğü güncellenmiş ya da telefon ilk kullanımda update yapılacak.")
-//                        SVProgressHUD.showProgress(0.0, status: "Sözlük indiriliyor : \n Lütfen bekleyin")
-                        self.googleDatabaseiniCek()
-                    }
-                }
-            }
-            
-            
-        }
-        
-        
-}
+   
     
     
   func silmeYap()
@@ -377,6 +325,78 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
                 cell?.textLabel?.text = ""
             }
             
+            
+        }
+    }
+    
+    func grdbSonuclariniListele (gelenAnahtarKelime : String) {
+        
+        
+        
+        do {
+            let dbQueue = try DatabaseQueue(path: dbPath)
+            
+            try dbQueue.inDatabase { db in
+                
+                //Select all data from the table named tablename residing in SQLite
+                let rows2 = try Row.fetchCursor(db, "SELECT * FROM ZIMPORT WHERE gAnahtarKelime = '\(gelenAnahtarKelime)'")
+                
+                while let row2 = try rows2.next() {
+                    
+                    
+                    let someString1 : String = row2["gMana1"]
+                    let someString2 : String = row2["gMana2"]
+                    let someString3 : String = row2["gMana3"]
+                    let someString4 : String = row2["gMana4"]
+                    let someString5 : String = row2["gMana5"]
+                    let someString6 : String = row2["gMana6"]
+                    let someString7 : String = row2["gMana7"]
+                    let someString8 : String = row2["gMana8"]
+                    let someString9 : String = row2["gMana9"]
+                    let someString10 : String = row2["gMana10"]
+                    
+                    
+                    
+                    
+                    altSonuc = [ ]
+                    altSonuc.append(someString1)
+                    
+                    if someString2 != "NULL"{
+                        altSonuc.append(someString2)}
+                    
+                    if someString3 != "NULL" {
+                        altSonuc.append(someString3)}
+                    if someString4 != "NULL" {
+                        altSonuc.append(someString4)}
+                    if someString5 != "NULL" {
+                        altSonuc.append(someString5) }
+                    if someString6 != "NULL" {
+                        altSonuc.append(someString6) }
+                    if someString7 != "NULL" {
+                        altSonuc.append(someString7) }
+                    if someString8 != "NULL" {
+                        altSonuc.append(someString8) }
+                    if someString9 != "NULL" {
+                        altSonuc.append(someString9) }
+                    if someString10 != "NULL"{
+                        altSonuc.append(someString10)
+                    }
+                    
+                    
+                    
+                    
+                    
+                    
+                    aramaSonuclariTableView.reloadData()
+                    
+                }
+             
+            }
+            
+            
+        } catch {
+            
+            print(error.localizedDescription)
             
         }
     }
@@ -471,12 +491,6 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         print("Reward based video ad will leave application.")
     }
     
-    @IBAction func reklamGoster(_ sender: Any) {
-        if rewardBasedAd.isReady{
-            rewardBasedAd.present(fromRootViewController: self)
-        }
-        
-    }
     
 }
 

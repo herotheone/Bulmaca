@@ -7,19 +7,19 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		2E9C9E832138270C0022C0EB /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2E9C9E822138270B0022C0EB /* GoogleService-Info.plist */; };
+		2E2BCC592155C59200F3EB7C /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2E2BCC582155C59200F3EB7C /* GoogleService-Info.plist */; };
+		2E2BCC632156431900F3EB7C /* db2.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = 2E2BCC622156431900F3EB7C /* db2.sqlite */; };
 		2EABEB0D2129FBD300243E24 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EABEB0C2129FBD300243E24 /* AppDelegate.swift */; };
 		2EABEB0F2129FBD300243E24 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EABEB0E2129FBD300243E24 /* ViewController.swift */; };
 		2EABEB122129FBD300243E24 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2EABEB102129FBD300243E24 /* Main.storyboard */; };
 		2EABEB152129FBD300243E24 /* Bulmaca_So_zlu_k.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 2EABEB132129FBD300243E24 /* Bulmaca_So_zlu_k.xcdatamodeld */; };
 		2EABEB172129FBD800243E24 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2EABEB162129FBD800243E24 /* Assets.xcassets */; };
 		2EABEB1A2129FBD800243E24 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2EABEB182129FBD800243E24 /* LaunchScreen.storyboard */; };
-		E0B90DD21CDE3DDDA26EB49B /* Pods_Bulmaca_So_zlu_k.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0BD26508FB420AFFCAFA70CA /* Pods_Bulmaca_So_zlu_k.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		0BD26508FB420AFFCAFA70CA /* Pods_Bulmaca_So_zlu_k.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Bulmaca_So_zlu_k.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		2E9C9E822138270B0022C0EB /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		2E2BCC582155C59200F3EB7C /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		2E2BCC622156431900F3EB7C /* db2.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; path = db2.sqlite; sourceTree = "<group>"; };
 		2EABEB092129FBD300243E24 /* Bulmaca Sözlük.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Bulmaca Sözlük.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2EABEB0C2129FBD300243E24 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2EABEB0E2129FBD300243E24 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -37,7 +37,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E0B90DD21CDE3DDDA26EB49B /* Pods_Bulmaca_So_zlu_k.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -90,13 +89,14 @@
 		2EABEB0B2129FBD300243E24 /* Bulmaca Sözlük */ = {
 			isa = PBXGroup;
 			children = (
+				2E2BCC622156431900F3EB7C /* db2.sqlite */,
 				2E9C9E872138581F0022C0EB /* Model */,
 				2E9C9E86213857FE0022C0EB /* View */,
 				2E9C9E84213857C00022C0EB /* Controller */,
 				2EABEB162129FBD800243E24 /* Assets.xcassets */,
 				2EABEB1B2129FBD800243E24 /* Info.plist */,
 				2EABEB132129FBD300243E24 /* Bulmaca_So_zlu_k.xcdatamodeld */,
-				2E9C9E822138270B0022C0EB /* GoogleService-Info.plist */,
+				2E2BCC582155C59200F3EB7C /* GoogleService-Info.plist */,
 			);
 			path = "Bulmaca Sözlük";
 			sourceTree = "<group>";
@@ -104,7 +104,6 @@
 		2FBB0F39CB026BFF7D15D505 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				0BD26508FB420AFFCAFA70CA /* Pods_Bulmaca_So_zlu_k.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -179,7 +178,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				2EABEB1A2129FBD800243E24 /* LaunchScreen.storyboard in Resources */,
-				2E9C9E832138270C0022C0EB /* GoogleService-Info.plist in Resources */,
+				2E2BCC632156431900F3EB7C /* db2.sqlite in Resources */,
+				2E2BCC592155C59200F3EB7C /* GoogleService-Info.plist in Resources */,
 				2EABEB172129FBD800243E24 /* Assets.xcassets in Resources */,
 				2EABEB122129FBD300243E24 /* Main.storyboard in Resources */,
 			);
@@ -195,6 +195,7 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-Bulmaca Sözlük/Pods-Bulmaca Sözlük-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/GRDB.swift/GRDB.framework",
 				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
 				"${BUILT_PRODUCTS_DIR}/SVProgressHUD/SVProgressHUD.framework",
@@ -204,6 +205,7 @@
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GRDB.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SVProgressHUD.framework",
@@ -320,7 +322,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -374,7 +376,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;
@@ -391,7 +393,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = X6J5BK9W64;
 				INFOPLIST_FILE = "Bulmaca Sözlük/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -411,7 +413,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = X6J5BK9W64;
 				INFOPLIST_FILE = "Bulmaca Sözlük/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
